@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nianzuochen.getajob.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="cn.nianzuochen.getajob.domain.dao.Student">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="bir" jdbcType="VARCHAR" property="bir" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="schtime" jdbcType="VARCHAR" property="schtime" />
+    <result column="idea" jdbcType="VARCHAR" property="idea" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="lev" jdbcType="VARCHAR" property="lev" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="ability" jdbcType="VARCHAR" property="ability" />
+    <result column="des" jdbcType="VARCHAR" property="des" />
+    <result column="account" jdbcType="INTEGER" property="account" />
+    <result column="schname" jdbcType="VARCHAR" property="schname" />
+    <result column="pol" jdbcType="VARCHAR" property="pol" />
+    <result column="isDeleted" jdbcType="INTEGER" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userId, tid, gender, bir, tel, email, photo, schtime, idea, address, lev, major, 
+    ability, des, account, schname, pol, isDeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.nianzuochen.getajob.domain.dao.Student">
+    insert into student (id, userId, tid, 
+      gender, bir, tel, email, 
+      photo, schtime, idea, 
+      address, lev, major, 
+      ability, des, account, 
+      schname, pol, isDeleted)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, 
+      #{gender,jdbcType=VARCHAR}, #{bir,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{schtime,jdbcType=VARCHAR}, #{idea,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{lev,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, 
+      #{ability,jdbcType=VARCHAR}, #{des,jdbcType=VARCHAR}, #{account,jdbcType=INTEGER}, 
+      #{schname,jdbcType=VARCHAR}, #{pol,jdbcType=VARCHAR}, #{isDeleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nianzuochen.getajob.domain.dao.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="bir != null">
+        bir,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="schtime != null">
+        schtime,
+      </if>
+      <if test="idea != null">
+        idea,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="lev != null">
+        lev,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="ability != null">
+        ability,
+      </if>
+      <if test="des != null">
+        des,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="schname != null">
+        schname,
+      </if>
+      <if test="pol != null">
+        pol,
+      </if>
+      <if test="isDeleted != null">
+        isDeleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="bir != null">
+        #{bir,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="schtime != null">
+        #{schtime,jdbcType=VARCHAR},
+      </if>
+      <if test="idea != null">
+        #{idea,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="lev != null">
+        #{lev,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="ability != null">
+        #{ability,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=INTEGER},
+      </if>
+      <if test="schname != null">
+        #{schname,jdbcType=VARCHAR},
+      </if>
+      <if test="pol != null">
+        #{pol,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.nianzuochen.getajob.domain.dao.Student">
+    update student
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="bir != null">
+        bir = #{bir,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="schtime != null">
+        schtime = #{schtime,jdbcType=VARCHAR},
+      </if>
+      <if test="idea != null">
+        idea = #{idea,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="lev != null">
+        lev = #{lev,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null">
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="ability != null">
+        ability = #{ability,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        des = #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=INTEGER},
+      </if>
+      <if test="schname != null">
+        schname = #{schname,jdbcType=VARCHAR},
+      </if>
+      <if test="pol != null">
+        pol = #{pol,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        isDeleted = #{isDeleted,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.nianzuochen.getajob.domain.dao.Student">
+    update student
+    set userId = #{userid,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=INTEGER},
+      gender = #{gender,jdbcType=VARCHAR},
+      bir = #{bir,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      schtime = #{schtime,jdbcType=VARCHAR},
+      idea = #{idea,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      lev = #{lev,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      ability = #{ability,jdbcType=VARCHAR},
+      des = #{des,jdbcType=VARCHAR},
+      account = #{account,jdbcType=INTEGER},
+      schname = #{schname,jdbcType=VARCHAR},
+      pol = #{pol,jdbcType=VARCHAR},
+      isDeleted = #{isDeleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectAllStudents" resultMap="BaseResultMap">
+      select
+      id, s.userId, tid, gender, bir, tel, email, photo, schtime, idea, address, lev, major,
+      ability, des, account, schname, pol, isDeleted
+      from student as s, userinfo as u
+      where (isDeleted = 0 or isDeleted = 2) and s.userId = u.userId
+      <if test="basicReq.studentName != null and basicReq.studentName!= ''">
+        and u.cname like concat('%', concat(#{basicReq.studentName,jdbcType=VARCHAR}, '%'))
+      </if>
+      order by isDeleted desc
+      <if test="basicReq.start != null and basicReq.size != null">
+        limit ${basicReq.start},${basicReq.size}
+      </if>
+    </select>
+
+    <select id="countAllStudents" resultType="java.lang.Integer">
+      select count(s.id)
+      from student as s, userinfo as u
+      where (isDeleted = 0 or isDeleted = 2) and s.userId = u.userId
+      <if test="basicReq.studentName != null and basicReq.studentName!= ''">
+        and u.cname like concat('%', concat(#{basicReq.studentName,jdbcType=VARCHAR}, '%'))
+      </if>
+    </select>
+
+  <select id="selectStudentsByTutorId" resultMap="BaseResultMap">
+    select id, s.userId, tid, gender, bir, tel, email, photo, schtime, idea, address, lev, major,
+      ability, des, account, schname, pol, isDeleted
+    from student as s, userinfo as u
+    where isDeleted = 0 or isDeleted = 2
+    and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+    limit #{selectStudentsByTIdReq.start}, #{selectStudentsByTIdReq.size}
+  </select>
+
+  <select id="countStudentsByTId" resultType="java.lang.Integer">
+    select count(id)
+    from student
+    where isDeleted = 0 or isDeleted = 2
+    and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+  </select>
+
+  <update id="logicDeleteById" parameterType="java.lang.Integer">
+    update student set isDeleted = 1, userId = 0 where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="passStudent">
+    update student
+    set isDeleted = 2
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllNotPassStudents" resultMap="BaseResultMap">
+    select id, s.userId, tid, gender, bir, tel, email, photo, schtime, idea, address, lev, major,
+    ability, des, account, schname, pol, isDeleted
+    from student as s, userinfo as u
+    where isDeleted = 3
+    and s.userId = u.userId
+    <if test="selectStudentsByTIdReq.tId != null">
+      and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+    </if>
+    <if test="selectStudentsByTIdReq.start != null and selectStudentsByTIdReq.size != null">
+      limit ${selectStudentsByTIdReq.start},${selectStudentsByTIdReq.size}
+    </if>
+
+  </select>
+  <select id="selectAllNotRegisterStudents" resultMap="BaseResultMap">
+    select id, s.userId, tid, gender, bir, tel, email, photo, schtime, idea, address, lev, major,
+    ability, des, account, schname, pol, isDeleted
+    from student as s, userinfo as u
+    where isDeleted = 2
+    and s.userId = u.userId
+    and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+    <if test="selectStudentsByTIdReq.start != null and selectStudentsByTIdReq.size != null">
+      limit ${selectStudentsByTIdReq.start},${selectStudentsByTIdReq.size}
+    </if>
+  </select>
+  <select id="selectAllRegistedStudents" resultMap="BaseResultMap">
+    select id, s.userId, tid, gender, bir, tel, email, photo, schtime, idea, address, lev, major,
+    ability, des, account, schname, pol, isDeleted
+    from student as s, userinfo as u
+    where isDeleted = 0
+    and s.userId = u.userId
+    and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+    <if test="selectStudentsByTIdReq.start != null and selectStudentsByTIdReq.size != null">
+      limit ${selectStudentsByTIdReq.start},${selectStudentsByTIdReq.size}
+    </if>
+  </select>
+  <select id="countAllNotPassStudents" resultType="java.lang.Integer">
+    select count(id)
+    from student
+    where isDeleted = 3
+    <if test="selectStudentsByTIdReq.tId != null">
+      and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="countAllNotRegisterStudents" resultType="java.lang.Integer">
+    select count(id)
+    from student
+    where isDeleted = 2
+    and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+  </select>
+  <select id="countAllRegistedStudents" resultType="java.lang.Integer">
+    select count(id)
+    from student
+    where isDeleted = 0
+    and tid = #{selectStudentsByTIdReq.tId,jdbcType=INTEGER}
+  </select>
+    <select id="selectByUserId" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from student
+      where userId = #{userId,jdbcType=INTEGER}
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-consume" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-dashboard" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-eureka-a" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-eureka-b" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-eureka-c" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-gatway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-service-a" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/getajob-service-b" charset="UTF-8" />
+  </component>
+</project>

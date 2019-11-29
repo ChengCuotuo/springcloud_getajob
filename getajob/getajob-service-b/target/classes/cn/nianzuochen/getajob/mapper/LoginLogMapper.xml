@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nianzuochen.getajob.mapper.LoginLogMapper">
+  <resultMap id="BaseResultMap" type="cn.nianzuochen.getajob.domain.dao.LoginLog">
+    <id column="loginId" jdbcType="INTEGER" property="loginId" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="loginTime" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="ifSuccess" jdbcType="INTEGER" property="ifSuccess" />
+    <result column="loginUserIp" jdbcType="VARCHAR" property="loginUserIp" />
+    <result column="loginDesc" jdbcType="VARCHAR" property="loginDesc" />
+    <result column="isDeleted" jdbcType="INTEGER" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    loginId, userId, loginTime, ifSuccess, loginUserIp, loginDesc,isDeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from loginlog
+    where loginId = #{loginId,jdbcType=INTEGER} and isDeleted = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from loginlog
+    where loginId = #{loginId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.nianzuochen.getajob.domain.dao.LoginLog">
+    insert into loginlog (userId, loginTime,
+      ifSuccess, loginUserIp, loginDesc
+      )
+    values (#{userId,jdbcType=INTEGER}, #{loginTime,jdbcType=TIMESTAMP},
+      #{ifSuccess,jdbcType=INTEGER}, #{loginUserIp,jdbcType=VARCHAR}, #{loginDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nianzuochen.getajob.domain.dao.LoginLog">
+    insert into loginlog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        loginId,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="loginTime != null">
+        loginTime,
+      </if>
+      <if test="ifSuccess != null">
+        ifSuccess,
+      </if>
+      <if test="loginUserIp != null">
+        loginUserIp,
+      </if>
+      <if test="loginDesc != null">
+        loginDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        #{loginId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ifSuccess != null">
+        #{ifSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserIp != null">
+        #{loginUserIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDesc != null">
+        #{loginDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.nianzuochen.getajob.domain.dao.LoginLog">
+    update loginlog
+    <set>
+      <if test="userId != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="loginTime != null">
+        loginTime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ifSuccess != null">
+        ifSuccess = #{ifsuccess,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserIp != null">
+        loginUserIp = #{loginuserip,jdbcType=VARCHAR},
+      </if>
+      <if test="loginDesc != null">
+        loginDesc = #{logindesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where loginId = #{loginid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.nianzuochen.getajob.domain.dao.LoginLog">
+    update loginlog
+    set userId = #{userId,jdbcType=INTEGER},
+      loginTime = #{loginTime,jdbcType=TIMESTAMP},
+      ifSuccess = #{ifSuccess,jdbcType=INTEGER},
+      loginUserIp = #{loginUserIp,jdbcType=VARCHAR},
+      loginDesc = #{loginDesc,jdbcType=VARCHAR}
+    where loginId = #{loginId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectLoginLog" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from loginlog
+    where isDeleted = 0
+    <if test="loadLoginLog.startDate!=null and loadLoginLog.endDate!=null">
+      and loginTime between #{loadLoginLog.startDate,jdbcType=TIMESTAMP} and #{loadLoginLog.endDate,jdbcType=TIMESTAMP}
+    </if>
+    order by loginTime desc
+    limit #{loadLoginLog.start,jdbcType=INTEGER}, #{loadLoginLog.size,jdbcType=INTEGER}
+  </select>
+  <select id="countLoginLog" resultType="java.lang.Integer">
+    select count(loginId)
+    from loginlog
+    where isDeleted = 0
+    <if test="loadLoginLog.startDate!=null and loadLoginLog.endDate!=null">
+      and loginTime between #{loadLoginLog.startDate,jdbcType=TIMESTAMP}and  #{loadLoginLog.endDate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+</mapper>

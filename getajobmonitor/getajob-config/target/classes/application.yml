@@ -1,0 +1,12 @@
+server:
+  port: 3345
+spring:
+  application:
+    name: getajob-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://code.aliyun.com/chunlei.wang/getajob-config.git
+          password: chunlei@1105
+          username: lei021191@outlook.com

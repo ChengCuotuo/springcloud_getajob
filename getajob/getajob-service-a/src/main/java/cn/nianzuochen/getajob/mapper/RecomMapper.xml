@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nianzuochen.getajob.mapper.RecomMapper">
+  <resultMap id="BaseResultMap" type="cn.nianzuochen.getajob.domain.dao.Recom">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stuid" jdbcType="INTEGER" property="stuid" />
+    <result column="tutorid" jdbcType="INTEGER" property="tutorid" />
+    <result column="input" jdbcType="VARCHAR" property="input" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stuid, tutorid, input
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from recom
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from recom
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.nianzuochen.getajob.domain.dao.Recom">
+    insert into recom (id, stuid, tutorid, 
+      input)
+    values (#{id,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, #{tutorid,jdbcType=INTEGER}, 
+      #{input,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nianzuochen.getajob.domain.dao.Recom">
+    insert into recom
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="stuid != null">
+        stuid,
+      </if>
+      <if test="tutorid != null">
+        tutorid,
+      </if>
+      <if test="input != null">
+        input,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null">
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="tutorid != null">
+        #{tutorid,jdbcType=INTEGER},
+      </if>
+      <if test="input != null">
+        #{input,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.nianzuochen.getajob.domain.dao.Recom">
+    update recom
+    <set>
+      <if test="stuid != null">
+        stuid = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="tutorid != null">
+        tutorid = #{tutorid,jdbcType=INTEGER},
+      </if>
+      <if test="input != null">
+        input = #{input,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.nianzuochen.getajob.domain.dao.Recom">
+    update recom
+    set stuid = #{stuid,jdbcType=INTEGER},
+      tutorid = #{tutorid,jdbcType=INTEGER},
+      input = #{input,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

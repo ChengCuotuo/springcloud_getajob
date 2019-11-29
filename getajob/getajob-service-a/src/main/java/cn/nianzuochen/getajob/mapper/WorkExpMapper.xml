@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nianzuochen.getajob.mapper.WorkExpMapper">
+  <resultMap id="BaseResultMap" type="cn.nianzuochen.getajob.domain.dao.WorkExp">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="entname" jdbcType="VARCHAR" property="entname" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tid, time, entname, job
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workexp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from workexp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.nianzuochen.getajob.domain.dao.WorkExp">
+    insert into workexp (id, tid, time, 
+      entname, job)
+    values (#{id,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
+      #{entname,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nianzuochen.getajob.domain.dao.WorkExp">
+    insert into workexp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="entname != null">
+        entname,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entname != null">
+        #{entname,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.nianzuochen.getajob.domain.dao.WorkExp">
+    update workexp
+    <set>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entname != null">
+        entname = #{entname,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.nianzuochen.getajob.domain.dao.WorkExp">
+    update workexp
+    set tid = #{tid,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      entname = #{entname,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

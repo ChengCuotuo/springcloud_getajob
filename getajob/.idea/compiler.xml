@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="getajob-api" />
+        <module name="getajob-consume" />
+        <module name="getajob-eureka-a" />
+        <module name="getajob-eureka-b" />
+        <module name="getajob-eureka-c" />
+        <module name="getajob-gatway" />
+        <module name="getajob-service-a" />
+        <module name="getajob-service-b" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="getajob" target="1.8" />
+      <module name="getajob-api" target="1.8" />
+      <module name="getajob-consume" target="1.8" />
+      <module name="getajob-eureka-a" target="1.8" />
+      <module name="getajob-eureka-b" target="1.8" />
+      <module name="getajob-eureka-c" target="1.8" />
+      <module name="getajob-gatway" target="1.8" />
+      <module name="getajob-service-a" target="1.8" />
+      <module name="getajob-service-b" target="1.8" />
+      <module name="getajobdashboard" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nianzuochen.getajob.mapper.VerificationCodeMapper">
+  <resultMap id="BaseResultMap" type="cn.nianzuochen.getajob.domain.dao.VerificationCode">
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.nianzuochen.getajob.domain.dao.VerificationCode">
+    insert into verificationcode (userId, code)
+    values (#{userid,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nianzuochen.getajob.domain.dao.VerificationCode">
+    insert into verificationcode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByUserId" resultMap="BaseResultMap">
+     select userId, code
+     from verificationcode
+     where userId = #{userId,jdbcType=INTEGER}
+  </select>
+  <update id="updateByUserId">
+    update verificationcode
+    set code = #{vericode.code,jdbcType=VARCHAR}
+    where userId = #{vericode.userid,jdbcType=INTEGER}
+  </update>
+</mapper>

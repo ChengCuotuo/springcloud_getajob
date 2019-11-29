@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nianzuochen.getajob.mapper.MatchMapper">
+  <resultMap id="BaseResultMap" type="cn.nianzuochen.getajob.domain.dao.Match">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="stuid" jdbcType="INTEGER" property="stuid" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="stp" jdbcType="VARCHAR" property="stp" />
+    <result column="pts" jdbcType="VARCHAR" property="pts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, stuid, result, stp, pts
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from match
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from match
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.nianzuochen.getajob.domain.dao.Match">
+    insert into match (id, pid, stuid, 
+      result, stp, pts)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, 
+      #{result,jdbcType=VARCHAR}, #{stp,jdbcType=VARCHAR}, #{pts,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nianzuochen.getajob.domain.dao.Match">
+    insert into match
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="stuid != null">
+        stuid,
+      </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="stp != null">
+        stp,
+      </if>
+      <if test="pts != null">
+        pts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null">
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="stp != null">
+        #{stp,jdbcType=VARCHAR},
+      </if>
+      <if test="pts != null">
+        #{pts,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.nianzuochen.getajob.domain.dao.Match">
+    update match
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null">
+        stuid = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="result != null">
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="stp != null">
+        stp = #{stp,jdbcType=VARCHAR},
+      </if>
+      <if test="pts != null">
+        pts = #{pts,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.nianzuochen.getajob.domain.dao.Match">
+    update match
+    set pid = #{pid,jdbcType=INTEGER},
+      stuid = #{stuid,jdbcType=INTEGER},
+      result = #{result,jdbcType=VARCHAR},
+      stp = #{stp,jdbcType=VARCHAR},
+      pts = #{pts,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

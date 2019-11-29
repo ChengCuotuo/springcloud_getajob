@@ -1,0 +1,13 @@
+server:
+  port: 3345
+spring:
+  application:
+    name: getajob-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://code.aliyun.com/chunlei.wang/getajob-config.git
+#          私有仓库需要用户名和密码
+#          password:
+#          username:

@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: getajob-eureka-a
+      profile: test
+      label: master
+      uri: http://localhost:3345

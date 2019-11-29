@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/getajob.iml" filepath="$PROJECT_DIR$/getajob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-api/getajob-api.iml" filepath="$PROJECT_DIR$/getajob-api/getajob-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-consume/getajob-consume.iml" filepath="$PROJECT_DIR$/getajob-consume/getajob-consume.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-eureka-a/getajob-eureka-a.iml" filepath="$PROJECT_DIR$/getajob-eureka-a/getajob-eureka-a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-eureka-b/getajob-eureka-b.iml" filepath="$PROJECT_DIR$/getajob-eureka-b/getajob-eureka-b.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-eureka-c/getajob-eureka-c.iml" filepath="$PROJECT_DIR$/getajob-eureka-c/getajob-eureka-c.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-gatway/getajob-gatway.iml" filepath="$PROJECT_DIR$/getajob-gatway/getajob-gatway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-service-a/getajob-service-a.iml" filepath="$PROJECT_DIR$/getajob-service-a/getajob-service-a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/getajob-service-b/getajob-service-b.iml" filepath="$PROJECT_DIR$/getajob-service-b/getajob-service-b.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.nianzuochen.getajob.mapper.EnterpriseMapper">
+  <resultMap id="BaseResultMap" type="cn.nianzuochen.getajob.domain.dao.Enterprise">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="trademark" jdbcType="VARCHAR" property="trademark" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="lables" jdbcType="VARCHAR" property="lables" />
+    <result column="des" jdbcType="VARCHAR" property="des" />
+    <result column="lev" jdbcType="VARCHAR" property="lev" />
+    <result column="isDeleted" jdbcType="INTEGER" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, website, name, trademark, address, lables, des, lev, isDeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from enterprise
+    where id = #{id,jdbcType=INTEGER}
+    and isDeleted = 0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from enterprise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.nianzuochen.getajob.domain.dao.Enterprise">
+    insert into enterprise (id, website, name, 
+      trademark, address, lables, 
+      des, lev)
+    values (#{id,jdbcType=INTEGER}, #{website,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{trademark,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{lables,jdbcType=VARCHAR}, 
+      #{des,jdbcType=VARCHAR}, #{lev,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.nianzuochen.getajob.domain.dao.Enterprise">
+    insert into enterprise
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="trademark != null">
+        trademark,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="lables != null">
+        lables,
+      </if>
+      <if test="des != null">
+        des,
+      </if>
+      <if test="lev != null">
+        lev,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trademark != null">
+        #{trademark,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="lables != null">
+        #{lables,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="lev != null">
+        #{lev,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.nianzuochen.getajob.domain.dao.Enterprise">
+    update enterprise
+    <set>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="trademark != null">
+        trademark = #{trademark,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="lables != null">
+        lables = #{lables,jdbcType=VARCHAR},
+      </if>
+      <if test="des != null">
+        des = #{des,jdbcType=VARCHAR},
+      </if>
+      <if test="lev != null">
+        lev = #{lev,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.nianzuochen.getajob.domain.dao.Enterprise">
+    update enterprise
+    set website = #{website,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      trademark = #{trademark,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      lables = #{lables,jdbcType=VARCHAR},
+      des = #{des,jdbcType=VARCHAR},
+      lev = #{lev,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectAllEnterprises" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from enterprise
+      where  isDeleted = 0
+      <if test="basicReq.enterpriseName != null and basicReq.enterpriseName != ''">
+        and name like concat('%',concat(#{basicReq.enterpriseName,jdbcType=VARCHAR}, '%'))
+      </if>
+      <if test="basicReq.start != null and basicReq.size != null">
+        limit ${basicReq.start},${basicReq.size}
+      </if>
+    </select>
+  <select id="countEnterPrises" resultType="java.lang.Integer">
+    select  count(id)
+    from enterprise
+    where isDeleted = 0
+  </select>
+  <update id="logicDeleteById">
+    update enterprise set isDeleted = 1 where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>
