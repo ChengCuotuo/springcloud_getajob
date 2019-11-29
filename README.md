@@ -46,4 +46,4 @@ SpringCloud 学习的记录 ：https://github.com/ChengCuotuo/springclouddemo
 服务只拆出了两个部分，一个 service-b 处理登录，注册，日志查询，service-a处理基本信息的操作
 
 安全部分...... Spring Security 在拆分之后不好用就砍掉了，接下来可以好好研究一下
-
+还有 gatway 部分实现了功能，没有给它投入使用。
