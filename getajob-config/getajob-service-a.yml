@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+server:
+  port: 8001
+
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_future?characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+  application:
+    name: getajobservicea
+
+logging:
+  level.root: info
+  level.com.chunlei.cn: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-a:7001/eureka/,http://eureka-b:7002/eureka/,http://eureka-c:7003/eureka/
+  instance:
+    instance-id: getajob-service-a
+    prefer-ip-address: true
+

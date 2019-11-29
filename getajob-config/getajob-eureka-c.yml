@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+spring:
+  profiles: test
+
+server:
+  port: 7003
+
+eureka:
+  instance:
+    hostname: eureka-c
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-b:7001/eureka/,http://eureka-c:7002/eureka/

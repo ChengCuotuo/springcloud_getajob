@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active:
+    - dev
+---
+  
+server:
+  port: 9527
+
+spring:
+  profiles: test
+  application:
+    name: getajob-gatway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-a:7001/eureka/,http://eureka-b:7002/eureka/,http://eureka-c:7003/eureka/
+  instance:
+    instance-id: gatway
+    prefer-ip-address: true
+
+
+# 映射规则
+zuul:
+  routes:
+    GATAJOBSERVICE:  # 指定服务器
+      path: /getajob/**  # 虚拟路径
+      serviceId: GETAJOBSERVICE
+  ignored-services: getajobservice
+  # 设置统一前缀
+#  prefix:
