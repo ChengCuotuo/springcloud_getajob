@@ -41,7 +41,7 @@ SpringCloud 学习的记录 ：https://github.com/ChengCuotuo/springclouddemo
 
 贴出一张 dashboard 监控的照片
 
-![dashboard](F:\programes\springcloud\springcloud_getajob\dashboard.png)
+![dashboard](https://github.com/ChengCuotuo/springcloud_getajob/blob/master/dashboard.png)
 
 服务只拆出了两个部分，一个 service-b 处理登录，注册，日志查询，service-a处理基本信息的操作
 
